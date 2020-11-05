@@ -1,0 +1,59 @@
+mat-sidenav-container{
+	width: 100%;
+	height: 400px;
+}
+mat-sidenav{
+	background-color: #E8E8FF;
+}
+img{
+	height: 140px;
+	width: 140px;
+
+	align-self: center;
+}
+.mat-list-item{
+	color: #3f51b5;
+	font-family: Impact, Charcoal, sans-serif;
+}
+mat-list-item:hover{
+	background-color: #C1C1D4;
+
+}
+
+mat-grid-list{
+	padding: 20px;
+	
+}
+
+.name{
+	text-align: center;
+	font-family: Tahoma, Geneva, sans-serif;
+	font-weight: 500;
+	font-size: medium;
+	margin-top: 10px;
+	width: 140px;
+}
+
+.price{
+	font-family: Tahoma, Geneva, sans-serif;
+	font-weight: 500;
+	font-size: medium;
+	color: gray;
+	text-align: center;
+	margin-top: 10px;
+	width: 140px;
+}
+.mat-grid-tile {
+	button {
+	margin-top: 10px;
+	width: 140px;
+    }
+    button:hover{
+		color: #C1C1D4;
+	}
+
+}
+
+
+
+

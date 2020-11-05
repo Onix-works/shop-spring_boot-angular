@@ -1,0 +1,37 @@
+<mat-sidenav-container window:resize="onResized($event)">
+  <mat-sidenav mode="side" #sidenav opened position="start">
+    
+		<mat-list>
+      <mat-list-item  (click)="category=undefined; fetchByCategory(category)">All categories
+      </mat-list-item>
+      <div *ngFor="let cat of allCategories">
+      <mat-divider></mat-divider>
+			<mat-list-item  (click)="category=cat; fetchByCategory(category)">
+        {{cat}}
+      </mat-list-item>
+      </div>
+		</mat-list>
+	
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-grid-list [cols]="cols" rowHeight="1:1">
+    <mat-grid-tile class="grid-tile" *ngFor="let product of products">
+    <div class="product">
+    <div (click)="selectProduct(product)">
+      <img src="http://localhost:8080/api/image/{{product.image.id}}">
+      <div class="name">{{product.name}}</div>
+      <div class="price">{{product.price + '$'}}</div>
+    </div>
+    <button mat-raised-button color="primary" (click)="plusItem(product); fetchByCategory(category)">Add</button>
+    </div>
+</mat-grid-tile>
+    </mat-grid-list>
+    <mat-paginator 
+    [length]="length" 
+    [pageSize]="pageSize"
+    [pageSizeOptions]="[9]"
+    [pageIndex]="pageIndex"
+    (page)="getServerData($event)">
+    </mat-paginator>
+  </mat-sidenav-content>
+</mat-sidenav-container>

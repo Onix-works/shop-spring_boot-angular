@@ -1,0 +1,52 @@
+.prod{
+    width: 100%;
+	height: inherit;
+	display: flex;
+	font-family: "Kameron", serif;
+	font-size: 15px;
+}
+
+.product-view{
+	width: 75%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	
+}
+
+.side{
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	align-items: center;
+}
+.name{
+	font-size: 30px
+	
+}
+
+.price{
+	margin-top: 50px;
+	text-align: left;
+	font-size: 30px;
+	
+}
+.instock{
+	color: gray;
+}
+.cart-button{
+	margin-top: 25px;
+	background-color: lightgrey;
+}
+
+.description{
+	width: 80%;
+	min-width: 300px
+
+}
+
+.qualities{
+	max-width: 70%;
+	min-width: 300px;
+}

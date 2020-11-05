@@ -1,0 +1,60 @@
+mat-toolbar{
+	background-color: #3f51b5;
+	color: white;
+}
+h1{
+	font-size: 36px;
+}
+
+.standard-size-a {
+	font-size: large;
+}	
+.low-size-a {
+	font-size: smaller;
+	margin-left: 15%;
+}
+.lowest-size-a{
+	font-size: small;
+	margin-left: 10%;
+}
+.standard-size-img {
+	block-size: 45px;
+}	
+.low-size-img {
+	block-size: 30px;
+}
+
+a{
+	margin-top: 15px;
+	color: white;
+	margin-left: 20%;
+	text-decoration: none;
+	display: flex;
+	
+}
+img{
+	align-self: center;
+}
+.logout{
+	font-size: medium;
+}
+.menu-header:hover{
+	color:#E8E8FF;
+	text-decoration: dashed;
+	
+}
+.item-amount{
+	text-decoration: underline;
+	font-family: Tahoma, Geneva, sans-serif;
+	font-weight: 500;
+	font-size: small;
+	text-align: center;
+	margin-top: -16px;
+}
+.cart{
+	margin-top: 32px;
+	flex-direction: column;
+}
+.invisible{
+	visibility: hidden;
+}

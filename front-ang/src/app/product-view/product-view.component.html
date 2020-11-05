@@ -1,0 +1,19 @@
+<div class="prod">
+
+<div class="product-view">
+  <div class="name">{{this.product.name.toString()}}</div>
+  <img width="200" height="200" border="0" src="http://localhost:8080/api/image/{{product.id}}">
+    <div class="description">{{product.description.toString()}}</div>
+    <mat-list class="qualities">
+      <mat-list-item  *ngFor="let quality of product.qualities | keyvalue">
+        {{quality.key}} : {{quality.value}}
+      <mat-divider></mat-divider>
+    </mat-list-item>
+    </mat-list>
+</div>
+<div class="side">
+  <div class="price">{{product.price.toString()}}$</div>
+  <div class="instock"> In Stock: {{product.inStock.toString()}}</div>
+  <button mat-button class="cart-button" (click)="plusItem(product.name, product)">Add to cart</button>
+</div>
+</div>
