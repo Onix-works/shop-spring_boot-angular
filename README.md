@@ -26,7 +26,7 @@
    - Spring Boot
    - REST(JSON)
    - HTML, CSS
-   - Angular 10.0.4
+   - Angular 10
    - Angular Material
    - JavaScript
    - jQuery
