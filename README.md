@@ -38,7 +38,7 @@
    
   ### Secondary tools
 
-  Javax Validation API, slf4j, SCSS, TypeScript, Node.js, XML, YAML
+  Javax Validation API, slf4j, SCSS, TypeScript, Node.js, XML, YAML, Eclipse
   
   ### Authentication
   
@@ -46,6 +46,6 @@
   
   ### Deployment
 
-  Accessible at http://localhost:8080/. Needs to be deployed from a server in war package(or from IDE).
-  Alternatively, "front-ang" can be deployed on node.js server seperately from backend, (will require to configure CoRS)
+  Accessible at http://localhost:8080/. ntech-0.0.1-SNAPSHOT.war can be deployed from a server. Also "shop backend" can be executed from proper IDE.
+  Alternatively, "front-ang" can be deployed on node.js server seperately from backend(will require to configure CoRS in "shop backend" and remove files from "static" folder).
 
