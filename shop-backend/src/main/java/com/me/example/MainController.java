@@ -101,6 +101,7 @@ public class MainController {
     		
     		List<InCartProduct> oldList = myuser.getInCartProducts();
     		myuser.fromDTO(user);
+    		myuser = myUserService.update(myuser);
     		updateProductInStock(oldList, myuser.getInCartProducts());
     		myuser = myUserService.update(myuser);
     		user = myuser.toDTO();
@@ -111,6 +112,7 @@ public class MainController {
     			GithubUser gituser = githubUserService.findById(user.getId());
     			List<InCartProduct> oldList = gituser.getInCartProducts();
     	    	gituser.fromDTO(user);
+    	    	gituser = githubUserService.update(gituser);
     	    	updateProductInStock(oldList, gituser.getInCartProducts());
     	    	gituser = githubUserService.update(gituser);
     	    	user = gituser.toDTO();

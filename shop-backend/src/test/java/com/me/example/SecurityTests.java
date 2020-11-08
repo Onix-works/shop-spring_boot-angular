@@ -59,7 +59,7 @@ public class SecurityTests {
 
 		this.mockMvc.perform(formLogin().user("wrong@me.ru").password("user")		
 				)
-		.andExpect(status().isUnauthorized())
+		.andExpect(status().isMethodNotAllowed())
 		.andExpect(unauthenticated());
 	
 	}
@@ -69,7 +69,7 @@ public class SecurityTests {
 
 		this.mockMvc.perform(formLogin().user("wrong").password("wrong")		
 				)
-		.andExpect(status().isUnauthorized())
+		.andExpect(status().isMethodNotAllowed())
 		.andExpect(unauthenticated());
 	
 	}

@@ -14,16 +14,11 @@ import { User } from './models/user.model';
 })
 
 export class AppComponent {
+	
   title: string;
-
-
 
   constructor(private app: AppService,
               private http: HttpClient, private router: Router) {
       this.app.authenticate(undefined, undefined);
           }
-
-
-
-
 }

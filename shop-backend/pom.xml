@@ -13,6 +13,7 @@
 	<version>0.0.1-SNAPSHOT</version>
 	<name>oauth2-backend-1</name>
 	<description>oauth2 project</description>
+	<packaging>war</packaging>
 
 	<properties>
 		<java.version>14</java.version>

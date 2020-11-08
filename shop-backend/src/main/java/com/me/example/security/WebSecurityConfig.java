@@ -36,7 +36,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .disable()
             //.and()
             .authorizeRequests()
-              .antMatchers( "/h2-console/**", "/console/**","/api/register", "/products/**", "/api/image/**").permitAll()
+              .antMatchers( "/h2-console/**", "/console/**","/api/register", "/products/**", "/api/image/**", "/*", "/login/**").permitAll()
               .anyRequest().authenticated()
           .and()
           
@@ -47,11 +47,11 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
       	    .logout()
       	    .logoutUrl("/api/logout")
       	  .and()
-      	    .oauth2Login()
+      	    .oauth2Login()		    
       	      .userInfoEndpoint()
 			    .userService(oauth2Service)
 			  .and()
-				.defaultSuccessUrl("http://localhost:4200/home");
+				.defaultSuccessUrl("http://localhost:8080");
 
      }  
 

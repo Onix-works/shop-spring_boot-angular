@@ -3,12 +3,12 @@
   <mat-toolbar-row window:resize="onResized($event)" >
     <h1>NTech</h1>
       <a [ngClass]="styleA" routerLinkActive="menu-header" routerLink="/home">Catalog</a>
-      <a [ngClass]="styleA" class="menu-header" *ngIf="!authenticated()" routerLink="/login">Login</a>
-      <a [ngClass]="styleA" class="cart" *ngIf="authenticated()"  >
+      <a [ngClass]="styleA" class="menu-header" *ngIf="!getAuthenticated()" routerLink="/loginpage">Login</a>
+      <a [ngClass]="styleA" class="cart" *ngIf="getAuthenticated()"  >
         <div class="menu-header" routerLink="/cart">Cart</div>
         <div class = "item-amount menu-header" [ngClass]="{'invisible': (getCartItemsAmount()<=0)}">Items: {{getCartItemsAmount()}}</div>
       </a>
-      <a [ngClass]="styleA" *ngIf="getUser()!=null">
+      <a [ngClass]="styleA" *ngIf="getUser()!=null && getAuthenticated()">
         <img [ngClass]="styleImg" src="http://localhost:8080/api/userphoto/{{getUser().imageId}}">
         <div> 
           <div>{{getUser().name}}</div>

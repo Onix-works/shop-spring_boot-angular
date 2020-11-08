@@ -23,7 +23,7 @@ import { ProductService } from './product.service';
 const routes: Routes = [
   { path: '', pathMatch: 'full', redirectTo: 'home'},
   { path: 'home', component: HomeComponent},
-  { path: 'login', component: LoginComponent},
+  { path: 'loginpage', component: LoginComponent},
   { path: 'cart', component: CartComponent},
   { path: 'product', component: ProductViewComponent},
 ];

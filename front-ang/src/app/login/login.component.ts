@@ -23,7 +23,6 @@ export class LoginComponent {
   
   }
 
-
   login() {
     this.app.authenticate(this.credentials, () => {
         this.router.navigateByUrl('/');
@@ -39,7 +38,7 @@ export class LoginComponent {
   }
 
   requestAuth(){
-    window.location.replace(this.baseUrl +'oauth2/authorization/github');
+    window.location.href = (this.baseUrl +'oauth2/authorization/github');
   }
 
 }

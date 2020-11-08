@@ -12,7 +12,6 @@ import { CartService } from '../cart.service';
 import { ResizedEvent } from 'angular-resize-event';
 
 
-
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
@@ -21,26 +20,29 @@ import { ResizedEvent } from 'angular-resize-event';
 export class HomeComponent implements OnInit {
 
   title = 'Demo';
+  authenticated: boolean;
   products: Array<Product>;
   length: number;
   pageSize: number;
   pageIndex: number;
   allCategories: Array<string> = ['PC', 'Laptops', 'Monitors' , 'Accessories'];
   category: string;
-  
   cols: number = 3;
 
   constructor(private app: AppService, private http: HttpClient, 
-    private product: ProductService, private cart: CartService, private router: Router) {
-      console.log('home constr ');
-    }
+    private product: ProductService, private cart: CartService, private router: Router){}
 
   ngOnInit(): void {
-    console.log('home init');
     this.pageSize = 6;
     this.pageIndex = 0;
     this.fetch();
+    this.fetchAuthenticated();
+  }
 
+  fetchAuthenticated(){
+	this.app.authenticated.subscribe((data: boolean) => {
+        this.authenticated = data;
+      });
   }
   
   @HostListener('window:resize', ['$event'])
@@ -52,17 +54,13 @@ export class HomeComponent implements OnInit {
     if (window.innerWidth <= 800){
       this.cols = 1;
     }
-
-
   }
 
    fetch(): void{
-     console.log('fetch home');
      this.product.fetch(this.pageSize, this.pageIndex);
      this.product.productData.subscribe((data: HypermediaResult) => {
         this.products = data._embedded.products;
         this.length = data.page.totalElements;
-        console.log('RESPONSE DATA home' + JSON.stringify(data));
       });
     }
 
@@ -79,24 +77,18 @@ export class HomeComponent implements OnInit {
       }
     }
 
-
-
-  authenticated(): boolean { return this.app.authenticated; }
-
   getServerData(event: PageEvent): void{
     this.pageIndex = event.pageIndex;
     this.fetch();
 
   }
-  selectProduct(product: Product){
-    console.log('pushing prod');
-    
+  selectProduct(product: Product): void{
+    sessionStorage.setItem('selected_product_name', product.name);
     this.router.navigate(['/product']);
-    this.product.selectedProduct.next(product);
   }
 
-  plusItem(product){
-    if (this.app.getAuthenticated() === true) {
+  plusItem(product: Product): void{
+    if (this.authenticated === true) {
      this.cart.plusInCartProduct(product.name , product);
     }
     else{
