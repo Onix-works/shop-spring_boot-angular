@@ -11,6 +11,8 @@ import java.util.UUID;
 
 import javax.servlet.http.HttpServletResponse;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.ClassPathResource;
 import org.springframework.http.MediaType;
@@ -39,6 +41,8 @@ import com.me.example.user.UserDTO;
 @RestController
 public class MainController {
 	
+	Logger logger = LoggerFactory.getLogger(MainController.class);
+	
 	@Autowired
 	MyUserService myUserService;
 	
@@ -55,13 +59,6 @@ public class MainController {
 	GithubUserService githubUserService;
 	
 	
-	@RequestMapping("/api/resource")
-    public Map<String,Object> home() {
-      Map<String,Object> model = new HashMap<String,Object>();
-      model.put("id", UUID.randomUUID().toString());
-      model.put("content", "Hello World");
-      return model;
-    }
   
     @GetMapping("/api/user")
     public Principal principal(Principal  principal) {
@@ -98,10 +95,8 @@ public class MainController {
     public UserDTO updateUser(@PathVariable Long id, @RequestBody UserDTO user) {
     	if (SecurityContextHolder.getContext().getAuthentication() instanceof UsernamePasswordAuthenticationToken) {
     		MyUser myuser = myUserService.findById(user.getId());
-    		
     		List<InCartProduct> oldList = myuser.getInCartProducts();
     		myuser.fromDTO(user);
-    		myuser = myUserService.update(myuser);
     		updateProductInStock(oldList, myuser.getInCartProducts());
     		myuser = myUserService.update(myuser);
     		user = myuser.toDTO();
@@ -110,9 +105,11 @@ public class MainController {
     	else {
     		if (SecurityContextHolder.getContext().getAuthentication() instanceof OAuth2AuthenticationToken){
     			GithubUser gituser = githubUserService.findById(user.getId());
+    			
     			List<InCartProduct> oldList = gituser.getInCartProducts();
+    			if (!oldList.isEmpty())
+    			logger.info("OLD LIST" + oldList.get(0).getAmount());
     	    	gituser.fromDTO(user);
-    	    	gituser = githubUserService.update(gituser);
     	    	updateProductInStock(oldList, gituser.getInCartProducts());
     	    	gituser = githubUserService.update(gituser);
     	    	user = gituser.toDTO();
@@ -159,13 +156,18 @@ public class MainController {
     	for (InCartProduct incartnew : newList) {
     		for (InCartProduct incartold : oldList) {
     			if (incartold.getProduct().getId() == incartnew.getProduct().getId()) {
-    				incartnew.getProduct().setInStock(incartnew.getProduct().getInStock()
-    					- incartnew.getAmount() + incartold.getAmount());
+    				logger.info("FOUND IN OLD LIST" + incartnew.getProduct().getName() +
+    						"WAS INSTOCK" + incartnew.getProduct().getInStock());
+    				incartnew.getProduct().setInStock(incartnew.getProduct().getInStock() - incartnew.getAmount() + incartold.getAmount());
+    				logger.info("NOW INSTOCK" + incartnew.getProduct().getInStock());
     				productPresent = true;
     			}
     		}
     		if (!productPresent) {
+    			logger.info("NOT FOUND IN OLD LIST" + incartnew.getProduct().getName() +
+						"WAS INSTOCK" + incartnew.getProduct().getInStock());
     			incartnew.getProduct().setInStock(incartnew.getProduct().getInStock() - incartnew.getAmount());
+    			logger.info("NOW INSTOCK" + incartnew.getProduct().getInStock());
     		}
     		productPresent = false;
     	}
@@ -173,11 +175,16 @@ public class MainController {
     	for (InCartProduct incartold : oldList) {
     		for (InCartProduct incartnew : newList) {
     			if (incartold.getProduct().getId() == incartnew.getProduct().getId()) {
+    				logger.info("FOUND IN NEW LIST" + incartold.getProduct().getName() +
+    						"WAS INSTOCK" + incartold.getProduct().getInStock());
     				productPresent = true;
     			}
     		}
     		if (!productPresent) {
+    			logger.info("NOT FOUND IN NEW LIST" + incartold.getProduct().getName() +
+						"WAS INSTOCK" + incartold.getProduct().getInStock());
     			incartold.getProduct().setInStock(incartold.getProduct().getInStock() + incartold.getAmount());
+    			logger.info("NOW INSTOCK" + incartold.getProduct().getInStock());
     			productService.update(incartold.getProduct());
 			}
     		

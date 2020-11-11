@@ -27,7 +27,7 @@ public class InCartProduct  {
 	private Long id;
 		
 	@NonNull
-	@ManyToOne(cascade = CascadeType.ALL)
+	@ManyToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH,CascadeType.REMOVE})
 	private Product product;
 	
 	private short amount;

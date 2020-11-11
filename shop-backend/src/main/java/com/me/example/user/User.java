@@ -29,7 +29,7 @@ public class  User {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	protected Long id;
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH,CascadeType.REMOVE}, fetch = FetchType.EAGER)
 	protected List<InCartProduct> inCartProducts;
 	
 	@OneToOne( cascade = CascadeType.ALL)

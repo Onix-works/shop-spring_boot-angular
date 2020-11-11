@@ -2,15 +2,15 @@
 // Hover to view descriptions of existing attributes.
 // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
 {
-  "version": "0.2.0",
-  "configurations": [
-    {
-      "name": "Launch Chrome front-ang on Angular CLI Server",
-      "type": "chrome",
-      "request": "launch",
-      "port": 9239,
-      "webRoot": "${workspaceFolder}",
-      "url": "http://localhost:4200/#"
-    }
-  ]
+	"version": "0.2.0",
+	"configurations": [
+		{
+			"name": "Launch Chrome front-ang on Angular CLI Server",
+			"type": "chrome",
+			"request": "launch",
+			"port": 9239,
+			"webRoot": "${workspaceFolder}",
+			"url": "http://localhost:4200/#"
+		}
+	]
 }

@@ -86,6 +86,9 @@ public class ShopBackendApplication {
 		      
 		      InCartProduct inCart1 = new InCartProduct(prod1, (short) 2);
 		      InCartProduct inCart2 = new InCartProduct(prod2, (short) 14);
+		      inCart1 = inCartProductService.save(inCart1);
+		      inCart2 = inCartProductService.save(inCart2);
+
 		      myUser.addInCartProduct(inCart1);
 		      myUser.addInCartProduct(inCart2);
 		      myUserService.update(myUser);
@@ -131,8 +134,10 @@ public class ShopBackendApplication {
 	      String result = new BufferedReader(new InputStreamReader(inputStream))
 	    		  .lines().collect(Collectors.joining("\n"));
 	      prod.setDescription(result);
-	      
-	      prod.setImage(new Image("/images/" + filename + ".png"));
+	      	     
+	      Image image = new Image("/images/" + filename + ".png");
+	      image = imageService.save(image);
+	      prod.setImage(image);
 	      prod = productService.save(prod);
 	}
 

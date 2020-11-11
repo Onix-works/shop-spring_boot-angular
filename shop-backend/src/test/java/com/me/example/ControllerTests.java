@@ -52,19 +52,6 @@ class ControllerTests {
 		assertNotNull(controller);
 	}
 	
-	@Test
-	@WithMockUser(username = "me@me.com",password = "user")
-	public void mainController_listTest() throws Exception {
-
-		MvcResult mvcResult = mockMvc.perform(MockMvcRequestBuilders.get("/api/resource")
-			      .accept(MediaType.APPLICATION_JSON))
-				.andExpect(status().isOk())
-				.andReturn();
-		
-		String jsonResult = mvcResult.getResponse().getContentAsString();
-		HashMap<String,Object> content = objectMapper.readValue(jsonResult, HashMap.class);
-		assertTrue(content.size() > 0);
-	}
 	
 	@Test
 	public void mainController_registerTest() throws Exception {

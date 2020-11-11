@@ -1,13 +1,18 @@
 <div class="cart">
-	<div class="cart-item" *ngFor="let incartproduct of getUser().inCartProducts">
-       <div>{{incartproduct.product.name.toString()}}</div>
-       <img width="75" height="75" border="0" src="http://localhost:8080/api/image/{{incartproduct.product.id}}">
-       <div>{{incartproduct.product.price.toString()}}$</div>
-       <div>{{incartproduct.amount.toString()}}</div>
-        <div>Left: {{incartproduct.product.inStock}}</div>
-       <button mat-raised-button color="primary" (click)="plusItem(incartproduct.product.name)"> + </button>
-       <button mat-raised-button color="primary" (click)="minusItem(incartproduct.product.name)"> - </button>
-    </div>
-<div>Total: {{getPrice()}}$</div>
-    <button mat-raised-button class="order-button" color="primary" (click)="makeOrder()"> Make an order </button>
+	<div class="cart-item"
+		*ngFor="let incartproduct of getUser().inCartProducts">
+		<div>{{incartproduct.product.name.toString()}}</div>
+		<img width="75" height="75" border="0"
+			src="http://localhost:8080/api/image/{{incartproduct.product.id}}">
+		<div>{{incartproduct.product.price.toString()}}$</div>
+		<div>{{incartproduct.amount.toString()}}</div>
+		<div>Left: {{incartproduct.product.inStock}}</div>
+		<button mat-raised-button color="primary"
+			(click)="plusItem(incartproduct.product.name)">+</button>
+		<button mat-raised-button color="primary"
+			(click)="minusItem(incartproduct.product.name)">-</button>
+	</div>
+	<div>Total: {{getPrice()}}$</div>
+	<button mat-raised-button class="order-button" color="primary"
+		(click)="makeOrder()">Make an order</button>
 </div>

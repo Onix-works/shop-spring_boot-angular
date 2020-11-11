@@ -50,7 +50,7 @@ public class Product  {
 	@ElementCollection
 	List<String> categories;
 	
-	@OneToOne(cascade = CascadeType.ALL)
+	@OneToOne(cascade = {CascadeType.DETACH,CascadeType.MERGE,CascadeType.REFRESH,CascadeType.REMOVE})
 	Image image;
 
 }
