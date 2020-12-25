@@ -32,9 +32,8 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
     	http.cors()
           .and()
-            .csrf()//.csrfTokenRepository(CookieCsrfTokenRepository.withHttpOnlyFalse())
+            .csrf()
             .disable()
-            //.and()
             .authorizeRequests()
               .antMatchers( "/h2-console/**", "/console/**","/api/register", "/products/**", "/api/image/**", "/*", "/login/**").permitAll()
               .anyRequest().authenticated()
