@@ -31,4 +31,4 @@ spring:
             github:
               clientId: 00838fb3121b7fadeda0
               clientSecret: 7aca4731f4022a5a5a1aecf0d5c67c393c5137fe
-      
+msg: Hello 
