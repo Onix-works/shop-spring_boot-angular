@@ -35,10 +35,10 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
             .csrf()
             .disable()
             .authorizeRequests()
-              .antMatchers( "/h2-console/**", "/console/**","/api/register", "/products/**", "/api/image/**", "/*", "/login/**").permitAll()
+              .antMatchers( "/h2-console/**", "/console/**","/api/register", "/products/**",
+            		  "/api/image/**", "/*", "/login/**").permitAll()
               .anyRequest().authenticated()
           .and()
-          
           .headers().frameOptions().disable()
           .and()
       	    .httpBasic()
@@ -79,6 +79,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         CorsConfiguration configuration = new CorsConfiguration().applyPermitDefaultValues();
         configuration.setAllowCredentials(true);
+        configuration.addAllowedOriginPattern("**");
         source.registerCorsConfiguration("/**", configuration);
         return source;
     }
