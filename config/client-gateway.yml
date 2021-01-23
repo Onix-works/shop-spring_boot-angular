@@ -1,1 +1,43 @@
-spring:  cloud:    gateway:      discovery:        locator:          enabled: true      routes:      - id: frontend-path-home        uri: lb://CLIENT-FRONTEND        predicates:        - Path=/      - id: frontend-path-js        uri: lb://CLIENT-FRONTEND        predicates:        - Path=/*.*      - id: backend-path        uri: lb://CLIENT-BACKEND        predicates:        - Header=Referer, http://localhost:8080/(.*)      - id: frontend-path        uri: lb://CLIENT-FRONTEND        predicates:        - Path=/**    eureka:  client:    registerWithEureka: true    fetchRegistry: true    serviceUrl:      defaultZone: http://localhost:8761/eureka/  instance:    hostname: localhost logging:  level:    reactor:      netty: INFO    org:      springframework:        cloud:          gateway: TRACE         
+spring:
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      routes:
+      - id: frontend-path-home
+        uri: lb://CLIENT-FRONTEND
+        predicates:
+        - Path=/,/home
+      - id: frontend-path-js
+        uri: lb://CLIENT-FRONTEND
+        predicates:
+        - Path=/*.*
+      - id: backend-path
+        uri: lb://CLIENT-BACKEND
+        predicates:
+        - Header=Referer, http://localhost:8080/(.*)
+      - id: frontend-path
+        uri: lb://CLIENT-FRONTEND
+        predicates:
+        - Path=/**    
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: localhost 
+logging:
+  level:
+    reactor:
+      netty: INFO
+    org:
+      springframework:
+        cloud:
+          gateway: TRACE  
+ 
+      
+
+
