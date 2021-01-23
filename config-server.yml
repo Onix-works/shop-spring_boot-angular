@@ -2,32 +2,25 @@ spring:
   profiles:
     active:
     - development
-  h2:
-    console:
-      enabled: true
-  datasource:
-    url: jdbc:h2:mem:testdb
-  data:
-    rest:
-      detection-strategy: annotated
-    jpa: 
-      repositories: 
-        bootstrap-mode: default
- #jpa:
-    #hibernate:
-       #ddl-auto: create
- #datasource:
-    #initialization-mode: always
-    #platform: postgres
-    #url: jdbc:postgresql://localhost:5432/testdb
-    #username: postgres
-    #password: 1234
-        
-  security:
-      oauth2:
-        client:
-          registration:
-            github:
-              clientId: 00838fb3121b7fadeda0
-              clientSecret: 7aca4731f4022a5a5a1aecf0d5c67c393c5137fe
+  application:
+     name: config-server
+eureka:
+  client:
+    registerWithEureka: true
+    fetchRegistry: true
+    serviceUrl:
+      defaultZone: http://localhost:8761/eureka/
+  instance:
+    hostname: localhost
+server:
+  port: 8888  
+logging:
+  level:
+    reactor:
+      netty: INFO
+    org:
+      springframework:
+        cloud:
+          config: DEBUG
+          gateway: TRACE  
 msg: Hello 
