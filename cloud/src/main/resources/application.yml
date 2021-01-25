@@ -1,0 +1,1 @@
+spring:  profiles:    active:    - development  application:     name: servereureka:  client:    registerWithEureka: false    fetchRegistry: false  instance:    prefer-ip-address: true    hostname: localhostserver:   port: 8761
