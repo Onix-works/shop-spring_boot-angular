@@ -1,9 +1,9 @@
 spring:
-  h2:
-    console:
-      enabled: true
-  datasource:
-    url: jdbc:h2:mem:testdb
+  #h2:
+    #console:
+      #enabled: true
+  #datasource:
+    #url: jdbc:h2:mem:testdb
   data:
     rest:
       detection-strategy: annotated
@@ -12,15 +12,15 @@ spring:
         bootstrap-mode: default
   application:
      name: client-backend
- #jpa:
-    #hibernate:
-       #ddl-auto: create
- #datasource:
-    #initialization-mode: always
-    #platform: postgres
-    #url: jdbc:postgresql://localhost:5432/testdb
-    #username: postgres
-    #password: root      
+  jpa:
+    hibernate:
+       ddl-auto: create
+  datasource:
+    initialization-mode: always
+    platform: postgres
+    url: jdbc:postgresql://localhost:5432/testdb
+    username: postgres
+    password: root      
   security:
       oauth2:
         client:
