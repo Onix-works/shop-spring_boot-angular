@@ -22,7 +22,7 @@
 
    - Java 14
    - Maven
-   - SQL(MySQL, H2)
+   - SQL(PostgreSQL, H2)
    - JPA(Hibernate)
    - Spring (Core, MVC, Data, Security, Test, Cloud)
    - Spring Boot
