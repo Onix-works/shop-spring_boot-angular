@@ -11,7 +11,7 @@ spring:
       repositories: 
         bootstrap-mode: default
   application:
-     name: client-backend
+     name: catalogue
   jpa:
     hibernate:
        ddl-auto: create
