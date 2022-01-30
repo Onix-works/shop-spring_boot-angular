@@ -6,19 +6,19 @@ spring:
           enabled: true
       routes:
       - id: frontend-path-home
-        uri: lb://CLIENT-FRONTEND
+        uri: lb://CART
         predicates:
         - Path=/,/home
       - id: frontend-path-js
-        uri: lb://CLIENT-FRONTEND
+        uri: lb://CART
         predicates:
         - Path=/*.*
       - id: backend-path
-        uri: lb://CLOUD-CATALOGUE
+        uri: lb://CATALOGUE
         predicates:
         - Header=Referer, http://localhost:8080/(.*)
       - id: frontend-path
-        uri: lb://CLIENT-FRONTEND
+        uri: lb://CART
         predicates:
         - Path=/**    
 eureka:
