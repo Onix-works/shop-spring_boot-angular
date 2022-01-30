@@ -14,7 +14,7 @@ spring:
         predicates:
         - Path=/*.*
       - id: backend-path
-        uri: lb://CLOUD-CATALOGUE
+        uri: lb://CLIENT-BACKEND
         predicates:
         - Header=Referer, http://localhost:8080/(.*)
       - id: frontend-path
